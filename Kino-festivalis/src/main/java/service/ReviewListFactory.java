@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewListFactory {
-    private List<Review> reviewList = new ArrayList<>();
+    private static List<Review> reviewList = new ArrayList<>();
 
     public void addReview(Movie movie, double score, String comment) {
         reviewList.add(new Review(movie, score, comment));
     }
 
-    public List<Review> getReviewList() {
+    public static List<Review> getReviewList() {
         return reviewList;
     }
 

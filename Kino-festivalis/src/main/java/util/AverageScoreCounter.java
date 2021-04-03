@@ -14,15 +14,21 @@ public class AverageScoreCounter {
     public void updateAverageScore(Movie movie) {
         double scoreSum = 0;
         double totalReviewCount = 0;
+        double initialScore = 0;
         ReviewListFactory reviewListFactory = new ReviewListFactory();
-        List<Review> reviewList = reviewListFactory.getReviewList();
+        List<Review> reviewList = ReviewListFactory.getReviewList();
         for (Review entry : reviewList) {
             if (entry.getMovie().equals(movie)) {
+                if (initialScore == 0) {
+                    initialScore += entry.getMovie().getAverageScore();
+                    scoreSum += initialScore;
+                    totalReviewCount++;
+                }
                 scoreSum += entry.getScore();
                 totalReviewCount++;
             }
         }
         double newAverageScore = scoreSum / totalReviewCount;
-        movie.setAverageScore(newAverageScore);
+        movie.setAverageScore(newAverageScore); // todo: suapvalinti reiksme
     }
 }
