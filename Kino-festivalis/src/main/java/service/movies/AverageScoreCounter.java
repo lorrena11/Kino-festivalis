@@ -33,10 +33,12 @@ public class AverageScoreCounter {
                 totalReviewCount++;
             }
         }
-        double scoreAverage = scoreSum / totalReviewCount;
-        BigDecimal scoreAverageBD = new BigDecimal(scoreAverage).setScale(1, RoundingMode.HALF_UP);
-        double newAverageScore = scoreAverageBD.doubleValue();
-        movie.setAverageScore(newAverageScore);
+        if (!(totalReviewCount == 0)) {
+            double scoreAverage = scoreSum / totalReviewCount;
+            BigDecimal scoreAverageBD = new BigDecimal(scoreAverage).setScale(1, RoundingMode.HALF_UP);
+            double newAverageScore = scoreAverageBD.doubleValue();
+            movie.setAverageScore(newAverageScore);
+        }
     }
 
     /**

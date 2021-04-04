@@ -1,6 +1,6 @@
 package exceptions;
 
-public class MovieNotFoundException extends Exception {
+public class MovieNotOutYetException extends Exception {
     private String reason;
 
     public String getReason() {
@@ -11,7 +11,7 @@ public class MovieNotFoundException extends Exception {
         this.reason = reason;
     }
 
-    public MovieNotFoundException(String reason) {
+    public MovieNotOutYetException(String reason) {
         this.reason = reason;
     }
 }

@@ -23,19 +23,15 @@ public class RetrieveMovies {
         return String.valueOf(movieNames);
     }
 
-    public Movie receiveChosenMovie(long id) {
+    public Movie receiveChosenMovie(long id) throws MovieNotFoundException {
         List<Movie> movieList = MovieListFactory.getMovieList();
         Movie result = null;
-        try {
-            for (Movie entry : movieList) {
-                if (entry.getId() == id) {
-                    result = entry;
-                }
+        for (Movie entry : movieList) {
+            if (entry.getId() == id) {
+                result = entry;
             }
-            if (result == null) throw new MovieNotFoundException();
-        } catch (MovieNotFoundException e) {
-            System.out.println("Movie with this ID not found");
         }
+        if (result == null) throw new MovieNotFoundException("Movie with this id doesn't exist");
 
         return result;
     }
@@ -57,6 +53,7 @@ public class RetrieveMovies {
 
         return topRatedMovies;
     }
+
     /**
      * this method returns a Map of movie names and their total count of reviews
      */
