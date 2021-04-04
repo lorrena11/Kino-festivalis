@@ -3,10 +3,10 @@ import exceptions.MovieNotFoundException;
 import exceptions.MovieNotOutYetException;
 import model.Movie;
 import service.StartApp;
-import service.reviews.ReviewListFactory;
-import service.movies.AverageScoreCounter;
+import service.movies.AverageScoreCounterImpl;
 import service.movies.RetrieveMovies;
 import service.reviews.RetrieveReviews;
+import service.reviews.ReviewListFactory;
 
 import java.time.LocalDate;
 import java.util.InputMismatchException;
@@ -20,6 +20,7 @@ public class Main {
         StartApp.load();
         ReviewListFactory writeReview = new ReviewListFactory();
         RetrieveMovies retrieveMovies = new RetrieveMovies();
+        AverageScoreCounterImpl updateScore = new AverageScoreCounterImpl();
 
         Scanner scanner = new Scanner(System.in);
         boolean program = true;
@@ -87,7 +88,7 @@ public class Main {
                                             System.out.println("Add a comment: ");
                                             String userComment = scanner.nextLine();
                                             writeReview.addReview(chosenMovieToReview, userRating, userComment);
-                                            AverageScoreCounter.updateAverageScore(chosenMovieToReview);
+                                            updateScore.updateAverageScore(chosenMovieToReview);
                                             System.out.println("Review added.");
                                             writingReview = false;
                                         } else throw new IncorrectReviewException();
@@ -101,8 +102,6 @@ public class Main {
                         } catch (MovieNotFoundException e) {
                             System.out.println(e.getReason());
                         }
-
-
                         break;
                     case 6:
                         program = false;

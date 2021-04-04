@@ -9,7 +9,7 @@ import service.movies.MovieListFactory;
 public class StartApp {
     public static void load() {
         MovieListFactory movieListFactory = new MovieListFactory();
-        movieListFactory.importMovies();
+        movieListFactory.addMovies();
     }
 
 

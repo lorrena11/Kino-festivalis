@@ -15,7 +15,7 @@ public class MovieListFactory {
     // contains all the available films
     private static List<Movie> movieList = new ArrayList<>();
 
-    public void importMovies() {
+    public void addMovies() {
         // todo: nuskaityti is .txt failo?
         // todo: įrašinėjant su json nenaudoti localdate, o tik date
         Movie movie1 = new Movie(1L, "Spring Day", "A short description of Spring Day", "1h 40m", LocalDate.of(2021, Month.MARCH, 29), 3.2);
@@ -36,8 +36,8 @@ public class MovieListFactory {
         obj.addReview(movie3, 4, "i liked it");
         obj.addReview(movie3, 3.1, "fell asleep");
         obj.addReview(movie3, 5, "just happy to be here tbh");
-
-        AverageScoreCounter.updateAllAverageScores(movieList);
+        AverageScoreCounterImpl updateScore = new AverageScoreCounterImpl();
+        updateScore.updateAllAverageScores(movieList);
     }
 
     public static List<Movie> getMovieList() {

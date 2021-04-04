@@ -2,11 +2,13 @@ package service.movies;
 
 import exceptions.MovieNotFoundException;
 import model.Movie;
-import service.reviews.ReviewCounter;
+import service.reviews.ReviewCounterImpl;
 import util.AverageScoreComparator;
 import util.CriteriaImpl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * class for retrieving movies. Sends movies straight back to the user or provides Lists and Maps to other classes and methods.
@@ -58,12 +60,11 @@ public class RetrieveMovies {
      * this method returns a Map of movie names and their total count of reviews
      */
     static Map<String, Long> receiveMoviesGroupedByReviewCount() {
-        ReviewCounter reviewCounter = new ReviewCounter();
-        Map<String, Long> countedReviewsOfEachMovie = reviewCounter.countReviews();
+        ReviewCounterImpl reviewCounterImpl = new ReviewCounterImpl();
+        Map<String, Long> countedReviewsOfEachMovie = reviewCounterImpl.countReviews();
 
         return countedReviewsOfEachMovie;
     }
-
 
     /**
      * this method returns a list of top 5 best rated movies to the user,

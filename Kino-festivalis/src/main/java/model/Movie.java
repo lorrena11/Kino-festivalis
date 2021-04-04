@@ -20,47 +20,26 @@ public class Movie {
         this.duration = duration;
         this.premiereDate = premiereDate;
         this.averageScore = averageScore;
-        // todo: nustatyti initial "kritiku" reitinga?
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
     public LocalDate getPremiereDate() {
         return premiereDate;
-    }
-
-    public void setPremiereDate(LocalDate premiereDate) {
-        this.premiereDate = premiereDate;
     }
 
     public double getAverageScore() {
