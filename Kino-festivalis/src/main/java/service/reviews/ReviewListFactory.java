@@ -1,4 +1,4 @@
-package service;
+package service.reviews;
 
 import model.Movie;
 import model.Review;
@@ -6,6 +6,9 @@ import model.Review;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * a class that holds a review list
+ */
 public class ReviewListFactory {
     private static List<Review> reviewList = new ArrayList<>();
 

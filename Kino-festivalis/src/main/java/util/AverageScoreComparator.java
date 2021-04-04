@@ -4,6 +4,9 @@ import model.Movie;
 
 import java.util.Comparator;
 
+/**
+ * method in this class compares movies by their average score
+ */
 public class AverageScoreComparator implements Comparator<Movie> {
 
     @Override
