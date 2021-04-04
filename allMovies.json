@@ -1,0 +1,92 @@
+[ {
+  "id" : 1,
+  "name" : "Spring Day",
+  "description" : "A short description of Spring Day",
+  "duration" : "1h 40m",
+  "premiereDate" : "2021-03-29",
+  "averageScore" : 7.0
+}, {
+  "id" : 2,
+  "name" : "Parasite",
+  "description" : "A short description of Parasite",
+  "duration" : "2h 03m",
+  "premiereDate" : "2021-03-31",
+  "averageScore" : 8.9
+}, {
+  "id" : 3,
+  "name" : "Green Book",
+  "description" : "A short description of Green Book",
+  "duration" : "1h 56m",
+  "premiereDate" : "2021-03-30",
+  "averageScore" : 8.0
+}, {
+  "id" : 4,
+  "name" : "Unreleased",
+  "description" : "A short description of Unreleased",
+  "duration" : "1h 30m",
+  "premiereDate" : "2021-04-22",
+  "averageScore" : 9.2
+}, {
+  "id" : 5,
+  "name" : "Tom & Jerry",
+  "description" : "A short description of Tom & Jerry",
+  "duration" : "1h 35m",
+  "premiereDate" : "2021-04-01",
+  "averageScore" : 3.7
+}, {
+  "id" : 6,
+  "name" : "Raya and the last dragon",
+  "description" : "A short description of Raya and the last dragon",
+  "duration" : "1h 45m",
+  "premiereDate" : "2021-04-02",
+  "averageScore" : 7.7
+}, {
+  "id" : 7,
+  "name" : "Godzilla vs Kong",
+  "description" : "A short description of Godzilla vs Kong",
+  "duration" : "2h 03m",
+  "premiereDate" : "2021-04-03",
+  "averageScore" : 5.0
+}, {
+  "id" : 8,
+  "name" : "Minari",
+  "description" : "A short description of Minari",
+  "duration" : "2h 00m",
+  "premiereDate" : "2021-04-07",
+  "averageScore" : 9.5
+}, {
+  "id" : 9,
+  "name" : "Soul",
+  "description" : "A short description of Soul",
+  "duration" : "1h 40m",
+  "premiereDate" : "2021-03-25",
+  "averageScore" : 9.0
+}, {
+  "id" : 10,
+  "name" : "Harry Potter",
+  "description" : "A short description of Harry Potter",
+  "duration" : "1h 35m",
+  "premiereDate" : "2021-04-01",
+  "averageScore" : 3.7
+}, {
+  "id" : 11,
+  "name" : "Casablanca",
+  "description" : "A short description of Casablanca",
+  "duration" : "2h 35m",
+  "premiereDate" : "2021-04-29",
+  "averageScore" : 8.3
+}, {
+  "id" : 12,
+  "name" : "The Godfather",
+  "description" : "A short description of The Godfather",
+  "duration" : "2h 15m",
+  "premiereDate" : "2021-04-20",
+  "averageScore" : 9.0
+}, {
+  "id" : 13,
+  "name" : "Spotlight",
+  "description" : "A short description of Spotlight",
+  "duration" : "2h 07m",
+  "premiereDate" : "2021-04-07",
+  "averageScore" : 8.0
+} ]

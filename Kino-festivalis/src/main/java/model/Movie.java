@@ -1,6 +1,8 @@
 package model;
 
-import java.time.LocalDate;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * a movie representation
@@ -10,10 +12,14 @@ public class Movie {
     private String name;
     private String description;
     private String duration;
-    private LocalDate premiereDate;
+    private Date premiereDate;
     private double averageScore;
+    private DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-    public Movie(long id, String name, String description, String duration, LocalDate premiereDate, double averageScore) {
+    public Movie() {
+    }
+
+    public Movie(long id, String name, String description, String duration, Date premiereDate, double averageScore) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -38,7 +44,7 @@ public class Movie {
         return duration;
     }
 
-    public LocalDate getPremiereDate() {
+    public Date getPremiereDate() {
         return premiereDate;
     }
 
@@ -52,13 +58,12 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", duration='" + duration + '\'' +
-                ", premiereDate=" + premiereDate +
-                ", averageScore=" + averageScore +
+        return "Movie {" + id +
+                " - '" + name + '\'' +
+                ", description: '" + description + '\'' +
+                ". Duration: '" + duration + '\'' +
+                "; Premiere date: " + df.format(premiereDate) +
+                "; Average audience score: " + averageScore +
                 '}';
     }
 }
