@@ -46,7 +46,7 @@ public class Main {
                             long id = scanner.nextLong();
                             Movie chosenMovieInfo = retrieveMovies.receiveChosenMovie(id);
 
-                            if (!(chosenMovieInfo == null)) {
+                            if (chosenMovieInfo != null) {
                                 System.out.println(chosenMovieInfo);
                                 System.out.println("\nRead comments? [1] - read comments; [2] - go back");
                                 int choiceRead = scanner.nextInt();
