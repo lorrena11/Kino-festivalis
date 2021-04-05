@@ -41,10 +41,9 @@ public class RetrieveMovies {
     /**
      * this method adds just the id, name and rating of sorted movies to a String list
      */
-    static List<String> receiveMoviesSortedByRating() {
+    public List<String> receiveMoviesSortedByRating() {
         List<String> topRatedMovies = new ArrayList<>();
         List<Movie> movieList = new ArrayList<>(MovieListFactory.getMovieList());
-        //List<Movie> sortedList = movieList;
         movieList.sort(new AverageScoreComparator());
         for (Movie entry : movieList) {
             String id = String.valueOf(entry.getId());
@@ -59,11 +58,10 @@ public class RetrieveMovies {
     /**
      * this method returns a Map of movie names and their total count of reviews
      */
-    static Map<String, Long> receiveMoviesGroupedByReviewCount() {
+    public Map<String, Long> receiveMoviesGroupedByReviewCount() {
         ReviewCounterImpl reviewCounterImpl = new ReviewCounterImpl();
-        Map<String, Long> countedReviewsOfEachMovie = reviewCounterImpl.countReviews();
 
-        return countedReviewsOfEachMovie;
+        return reviewCounterImpl.countReviews();
     }
 
     /**

@@ -5,6 +5,7 @@ import model.Review;
 import service.reviews.ReviewListFactory;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.List;
 
@@ -27,16 +28,15 @@ public class AverageScoreCounterImpl implements AverageScoreCounter {
                 if (initialScore == 0) {
                     initialScore += entry.getMovie().getAverageScore();
                     scoreSum += initialScore;
-                    totalReviewCount++;
+                    ++totalReviewCount;
                 }
                 scoreSum += entry.getScore();
                 totalReviewCount++;
             }
         }
-        if (!(totalReviewCount == 0)) {
+        if (totalReviewCount != 0) {
             double scoreAverage = scoreSum / totalReviewCount;
-            BigDecimal scoreAverageBD = new BigDecimal(scoreAverage).setScale(1, RoundingMode.HALF_UP);
-            double newAverageScore = scoreAverageBD.doubleValue();
+            double newAverageScore = (double)Math.round(scoreAverage * 10d) / 10d;
             movie.setAverageScore(newAverageScore);
         }
     }

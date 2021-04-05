@@ -27,7 +27,7 @@ public class ReviewListFactory {
         addReview(movieList.get(2), 10, "just happy to be here tbh");
         addReview(movieList.get(2), 8.5, "very good movie");
         addReview(movieList.get(5), 8, "was ok I guess");
-        addReview(movieList.get(5), 8, "dragon looks weird");
+        addReview(movieList.get(5), 6, "dragon looks weird");
         addReview(movieList.get(6), 3, "unrealistic");
         addReview(movieList.get(8), 6, "gave me an existential crisis");
         addReview(movieList.get(8), 9.2, "it was nice");
