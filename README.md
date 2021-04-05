@@ -12,3 +12,5 @@ Programėlėje naudotojams turi būti pasiekiama informacija:
   
 Taip pat naudotojai turi galimybę įvesti savo įvertinimus – parašyti komentarą ir skirti balą nuo 1 iki 10.
   - Filmams, kurių premjera dar neįvykusi, įvesti įvertinimo negalima
+  - Visi filmai turi kokį nors pradinį "kritikų" įvertinimą
+
