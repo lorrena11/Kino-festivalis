@@ -1,0 +1,5 @@
+.idea
+*.iml
+Kino-festivalis/src/test
+/target
+*.class
