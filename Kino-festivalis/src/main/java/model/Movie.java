@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,13 +14,13 @@ public class Movie {
     private String description;
     private String duration;
     private Date premiereDate;
-    private double averageScore;
+    private BigDecimal averageScore;
     private DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     public Movie() {
     }
 
-    public Movie(long id, String name, String description, String duration, Date premiereDate, double averageScore) {
+    public Movie(long id, String name, String description, String duration, Date premiereDate, BigDecimal averageScore) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -48,11 +49,11 @@ public class Movie {
         return premiereDate;
     }
 
-    public double getAverageScore() {
+    public BigDecimal getAverageScore() {
         return averageScore;
     }
 
-    public void setAverageScore(double averageScore) {
+    public void setAverageScore(BigDecimal averageScore) {
         this.averageScore = averageScore;
     }
 

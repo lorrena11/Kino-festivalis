@@ -2,14 +2,14 @@ import exceptions.IncorrectReviewException;
 import exceptions.MovieNotFoundException;
 import exceptions.MovieNotOutYetException;
 import model.Movie;
-import service.StartApp;
+import service.LoadApp;
 import service.movies.AverageScoreCounterImpl;
 import service.movies.RetrieveMovies;
 import service.reviews.RetrieveReviews;
 import service.reviews.ReviewListFactory;
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        StartApp.load();
+        LoadApp.load();
         ReviewListFactory writeReview = new ReviewListFactory();
         RetrieveMovies retrieveMovies = new RetrieveMovies();
         AverageScoreCounterImpl updateScore = new AverageScoreCounterImpl();
@@ -85,8 +85,8 @@ public class Main {
                                 while (writingReview) {
                                     System.out.println("Add your rating [1-10]: ");
                                     try {
-                                        double userRating = scanner.nextDouble();
-                                        if (userRating >= 1 && userRating <= 10) {
+                                        BigDecimal userRating = BigDecimal.valueOf(scanner.nextDouble());
+                                        if (userRating.compareTo(BigDecimal.ONE) >= 0 && userRating.compareTo(BigDecimal.valueOf(10.01)) < 0) {
                                             scanner.nextLine();
                                             System.out.println("Add a comment: ");
                                             String userComment = scanner.nextLine();

@@ -17,7 +17,7 @@ import java.util.List;
  * a class that prepares the program by generating some initial movies and their reviews
  * before the user gets to interact with the app
  */
-public class StartApp {
+public class LoadApp {
     public static void load() throws IOException {
         MovieListFactory movieListFactory = new MovieListFactory();
         ReviewListFactory reviewListFactory = new ReviewListFactory();
