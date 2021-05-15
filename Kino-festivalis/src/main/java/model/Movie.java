@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,8 @@ public class Movie {
     private String duration;
 
     @Column(name = "premiere_date")
-    private Date premiereDate;
+    LocalDate premiereDate;
+    // private Date premiereDate;
 
     @Column(name = "average_score")
     private BigDecimal averageScore;
@@ -40,7 +42,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String name, String description, String duration, Date premiereDate, BigDecimal averageScore) {
+    public Movie(String name, String description, String duration, LocalDate premiereDate, BigDecimal averageScore) {
         this.name = name;
         this.description = description;
         this.duration = duration;
@@ -51,7 +53,7 @@ public class Movie {
     /**
      * old project constructor
      */
-    public Movie(long id, String name, String description, String duration, Date premiereDate, BigDecimal averageScore) {
+    public Movie(long id, String name, String description, String duration, LocalDate premiereDate, BigDecimal averageScore) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -76,7 +78,7 @@ public class Movie {
         return duration;
     }
 
-    public Date getPremiereDate() {
+    public LocalDate getPremiereDate() {
         return premiereDate;
     }
 

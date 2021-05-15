@@ -10,6 +10,7 @@ import service.reviews.ReviewListFactory;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -23,7 +24,9 @@ public class Main {
         ReviewListFactory writeReview = new ReviewListFactory();
         RetrieveMovies retrieveMovies = new RetrieveMovies();
         AverageScoreCounterImpl updateScore = new AverageScoreCounterImpl();
-        Date currentDate = new Date(System.currentTimeMillis());
+
+        //Date currentDate = new Date(System.currentTimeMillis());
+        LocalDate currentDate = LocalDate.now();
 
         Scanner scanner = new Scanner(System.in);
         boolean program = true;
@@ -79,7 +82,7 @@ public class Main {
                             long id1 = scanner.nextLong();
                             Movie chosenMovieToReview = retrieveMovies.receiveChosenMovie(id1);
 
-                            if (chosenMovieToReview.getPremiereDate().before(currentDate)) {
+                            if (chosenMovieToReview.getPremiereDate().isBefore(currentDate)) {
                                 boolean writingReview = true;
 
                                 while (writingReview) {
