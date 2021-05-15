@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
+ * NOT USED CURRENTLY
  * a class that prepares the program by generating some initial movies (from json file) and their reviews
  * before the user gets to interact with the app
  */
@@ -45,7 +46,7 @@ public class LoadApp {
         /**
          * generate some initial reviews
          */
-        reviewListFactory.addTestReviews(movieListFromFile);
+        //reviewListFactory.addTestReviews(movieListFromFile);
     }
 
 

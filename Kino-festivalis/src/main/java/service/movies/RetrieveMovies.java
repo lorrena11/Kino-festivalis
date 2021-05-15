@@ -20,10 +20,6 @@ public class RetrieveMovies {
     /**
      * get all movies:
      */
-    public List<Movie> getAllMovies(String key, Object value) {
-        return getAllMovies(key, value, false);
-    }
-
     public List<Movie> getAllMovies() {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
@@ -43,7 +39,11 @@ public class RetrieveMovies {
         return movies;
     }
 
-    private List<Movie> getAllMovies(String key, Object value, boolean limitOne) {
+    public List<Movie> getAllMovies(String key, Object value) {
+        return getAllMovies(key, value, false);
+    }
+
+    public List<Movie> getAllMovies(String key, Object value, boolean limitOne) {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
         List<Movie> movieList = new ArrayList<>();
@@ -102,9 +102,8 @@ public class RetrieveMovies {
     public List<String> receiveMoviesSortedByRating() {
         List<String> topRatedMovies = new ArrayList<>();
         List<Movie> allMovies = new ArrayList<>(getAllMovies());
-        List<Movie> sortedMovies = new ArrayList<>(allMovies);
-        sortedMovies.sort(new AverageScoreComparator());
-        for (Movie entry : sortedMovies) {
+        allMovies.sort(new AverageScoreComparator());
+        for (Movie entry : allMovies) {
             String id = String.valueOf(entry.getId());
             String name = entry.getName();
             String rating = String.valueOf(entry.getAverageScore());

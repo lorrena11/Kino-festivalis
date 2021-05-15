@@ -1,6 +1,9 @@
 package service.movies;
 
+import configuration.HibernateConfig;
 import model.Movie;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,11 +14,29 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * a class used previously to add some test values to movie list
+ * used for tests only
+ * a class to add some test values to movie list
  */
 public class MovieListFactory {
     // contains all the available films
     private static List<Movie> movieList = new ArrayList<>();
+
+    public Movie save(Movie movie) {
+        Session session = HibernateConfig.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            session.saveOrUpdate(movie);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
+
+        return movie;
+    }
 
     /**
      * this method generates movie data for the app
@@ -36,10 +57,13 @@ public class MovieListFactory {
         Movie movie11 = new Movie(11L, "Casablanca", "A short description of Casablanca", "2h 35m", LocalDate.of(2021, Month.APRIL, 29), BigDecimal.valueOf(8.3));
         Movie movie12 = new Movie(12L, "The Godfather", "A short description of The Godfather", "2h 15m", LocalDate.of(2021, Month.APRIL, 20), BigDecimal.valueOf(9));
         Movie movie13 = new Movie(13L, "Spotlight", "A short description of Spotlight", "2h 07m", LocalDate.of(2021, Month.APRIL, 7), BigDecimal.valueOf(8));
-        Movie movie14 = new Movie(13L, "Frozen", "A short description of Frozen", "2h 00m", LocalDate.of(2021, Month.JUNE, 7), BigDecimal.valueOf(5.5));
+        Movie movie14 = new Movie(14L, "Frozen", "A short description of Frozen", "2h 00m", LocalDate.of(2021, Month.JUNE, 7), BigDecimal.valueOf(5.5));
 
         List<Movie> generatedList = List.of(movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14);
         setMovieList(generatedList);
+        for (Movie entry : generatedList) {
+            save(entry);
+        }
     }
 
     public static void setMovieList(List<Movie> movieList) {

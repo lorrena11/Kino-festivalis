@@ -18,7 +18,7 @@ values ('Spring Day', 'A short description of Spring Day', '1h 40m', '2021-04-29
        ('Green Book', 'A short description of Green Book', '1h 56m', '2021-04-30', 8),
        ('Unreleased', 'A short description of Unreleased', '1h 30m', '2021-05-30', 9.2),
        ('Tom & Jerry', 'A short description of Tom & Jerry', '1h 35m', '2021-04-01', 3.7),
-       ('Raya and the last dragon', 'A short description of Raya and the last dragon', '1h 45m', '2021-04-02', 7.7),
+       ('Raya and the last dragon', 'A short description of Raya and the last dragon', '1h 45m', '2021-04-02', 8),
        ('Godzilla vs Kong', 'A short description of Godzilla vs Kong', '2h 03m', '2021-04-03', 5),
        ('Minari', 'A short description of Minari', '2h 00m', '2021-04-07', 9.5),
        ('Soul', 'A short description of Soul', '1h 40m', '2021-03-25', 9),

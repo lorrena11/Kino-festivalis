@@ -39,6 +39,14 @@ public class Review {
         this.comment = comment;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
     public Movie getMovie() {
         return movie;
     }

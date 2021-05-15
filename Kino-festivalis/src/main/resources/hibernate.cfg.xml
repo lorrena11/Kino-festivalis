@@ -12,8 +12,6 @@
             org.postgresql.Driver
         </property>
 
-        <!-- Assume test is the database name -->
-
         <property name="hibernate.connection.url">
             jdbc:postgresql://localhost/festival
         </property>
@@ -30,15 +28,9 @@
             true
         </property>
 
-        <!--        <property name="hibernate.format_sql">-->
-        <!--            true-->
-        <!--        </property>-->
-
 <!--         List of XML mapping files -->
 
         <mapping class="model.Movie"/>
         <mapping class="model.Review"/>
-
-
     </session-factory>
 </hibernate-configuration>
