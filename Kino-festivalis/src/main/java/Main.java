@@ -58,7 +58,6 @@ public class Main {
                                 System.out.println("\nRead comments? [1] - read comments; [2] - go back");
                                 int choiceRead = scanner.nextInt();
                                 if (choiceRead == 1) {
-                                    //System.out.println(retrieveReviews.readReviews(chosenMovieInfo));
                                     System.out.println(retrieveReviews.readReviews(chosenMovieInfo));
                                 } else {
                                     System.out.println("Back to main menu");

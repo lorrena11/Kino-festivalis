@@ -10,9 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * class for retrieving movies. Sends movies straight back to the user or provides Lists and Maps to other classes and methods.
@@ -116,15 +114,6 @@ public class RetrieveMovies {
     }
 
     /**
-     * this method returns a Map of movie names and their total count of reviews
-     */
-    public Map<String, Long> receiveMoviesGroupedByReviewCount() {
-        ReviewCounterImpl reviewCounterImpl = new ReviewCounterImpl();
-
-        return reviewCounterImpl.countReviews();
-    }
-
-    /**
      * this method returns a list of top 5 best rated movies to the user,
      * by providing a sorted list to the criteriaImpl class method
      */
@@ -132,6 +121,16 @@ public class RetrieveMovies {
         CriteriaImpl criteriaImpl = new CriteriaImpl();
 
         return criteriaImpl.meetCriteriaTop5BestRated(receiveMoviesSortedByRating());
+    }
+
+    /**
+     * this method returns a Map of movie names and their total count of reviews
+     * (Map is used for another method below)
+     */
+    public Map<String, Long> receiveMoviesGroupedByReviewCount() {
+        ReviewCounterImpl reviewCounterImpl = new ReviewCounterImpl();
+
+        return reviewCounterImpl.countReviews();
     }
 
     /**
@@ -143,4 +142,5 @@ public class RetrieveMovies {
 
         return criteriaImpl.meetCriteriaTop5MostPopular(receiveMoviesGroupedByReviewCount());
     }
+
 }
