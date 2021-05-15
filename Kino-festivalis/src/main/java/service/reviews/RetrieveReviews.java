@@ -37,7 +37,7 @@ public class RetrieveReviews {
         return getAllReviews(key, value, false);
     }
 
-    private List<Review> getAllReviews(String key, Object value, boolean limitOne) {
+    public List<Review> getAllReviews(String key, Object value, boolean limitOne) {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
         List<Review> reviewList = new ArrayList<>();

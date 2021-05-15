@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // LoadApp.load();
         HibernateConfig.buildSessionFactory();
-        ReviewListFactory writeReview = new ReviewListFactory();
+        ReviewListFactory reviewListFactory = new ReviewListFactory();
         RetrieveMovies retrieveMovies = new RetrieveMovies();
         RetrieveReviews retrieveReviews = new RetrieveReviews();
         AverageScoreCounterImpl updateScore = new AverageScoreCounterImpl();
@@ -97,7 +97,7 @@ public class Main {
                                             scanner.nextLine();
                                             System.out.println("Add a comment: ");
                                             String userComment = scanner.nextLine();
-                                            writeReview.addReview(chosenMovieToReview, userRating, userComment);
+                                            reviewListFactory.writeReview(chosenMovieToReview, userRating, userComment);
                                             updateScore.updateAverageScore(chosenMovieToReview);
                                             System.out.println("Review added.");
                                             writingReview = false;

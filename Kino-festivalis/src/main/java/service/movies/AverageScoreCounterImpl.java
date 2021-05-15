@@ -1,7 +1,11 @@
 package service.movies;
 
+import configuration.HibernateConfig;
 import model.Movie;
 import model.Review;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import service.reviews.RetrieveReviews;
 import service.reviews.ReviewListFactory;
 
 import java.math.BigDecimal;
@@ -18,26 +22,43 @@ public class AverageScoreCounterImpl implements AverageScoreCounter {
      * and sets a new average score.
      */
     public void updateAverageScore(Movie movie) {
+        Session session = HibernateConfig.openSession();
+        Transaction transaction = session.beginTransaction();
+
         BigDecimal scoreSum = BigDecimal.ZERO;
         int totalReviewCount = 0;
         BigDecimal initialScore = BigDecimal.ZERO;
-        List<Review> reviewList = ReviewListFactory.getReviewList();
+        BigDecimal newAverageScore;
+        RetrieveReviews retrieveReviews = new RetrieveReviews();
+        // List<Review> reviewList = ReviewListFactory.getReviewList();
+
+        List<Review> reviewList = retrieveReviews.getAllReviews("movie_id", movie.getId(), false);
+
         for (Review entry : reviewList) {
-            if (entry.getMovie().equals(movie)) {
-                if (initialScore.equals(BigDecimal.ZERO)) {
-                    initialScore = initialScore.add(entry.getMovie().getAverageScore());
-                    scoreSum = scoreSum.add(initialScore);
-                    ++totalReviewCount;
-                }
-                scoreSum = scoreSum.add(entry.getScore());
-                totalReviewCount++;
+
+            if (initialScore.equals(BigDecimal.ZERO)) {
+                initialScore = initialScore.add(entry.getMovie().getInitialScore());
+                scoreSum = scoreSum.add(initialScore);
+                ++totalReviewCount;
             }
+            scoreSum = scoreSum.add(entry.getScore());
+            totalReviewCount++;
+
         }
-        if (totalReviewCount != 0) {
-            BigDecimal newAverageScore = scoreSum.divide(BigDecimal.valueOf(totalReviewCount), RoundingMode.HALF_EVEN);
-            //double scoreAverage = scoreSum / totalReviewCount;
-            //BigDecimal newAverageScore = (double)Math.round(scoreAverage * 10d) / 10d;
+        try {
+            if (totalReviewCount != 0) {
+                newAverageScore = scoreSum.divide(BigDecimal.valueOf(totalReviewCount), RoundingMode.HALF_EVEN);
+            } else {
+                newAverageScore = movie.getInitialScore();
+            }
             movie.setAverageScore(newAverageScore);
+            session.saveOrUpdate(movie);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            session.close();
         }
     }
 

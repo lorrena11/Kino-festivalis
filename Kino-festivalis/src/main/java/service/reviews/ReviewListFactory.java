@@ -1,7 +1,10 @@
 package service.reviews;
 
+import configuration.HibernateConfig;
 import model.Movie;
 import model.Review;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import service.movies.AverageScoreCounterImpl;
 
 import java.math.BigDecimal;
@@ -12,8 +15,24 @@ import java.util.List;
  * a class that holds a review list
  */
 public class ReviewListFactory {
-    private static List<Review> reviewList = new ArrayList<>();
+    private static List<Review> reviewList = new ArrayList<>(); // not used with DB
 
+    public void writeReview(Movie movie, BigDecimal score, String comment) {
+        Session session = HibernateConfig.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            session.saveOrUpdate(new Review(movie, score, comment));
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
+    }
+
+//*********************************************************************************
     public void addReview(Movie movie, BigDecimal score, String comment) {
         reviewList.add(new Review(movie, score, comment));
     }

@@ -30,7 +30,7 @@ public class RetrieveMovies {
         List<Movie> movies = new ArrayList<>();
 
         try {
-            Query<Movie> query = session.createQuery("FROM Movie", Movie.class);
+            Query<Movie> query = session.createQuery("FROM Movie ORDER BY id", Movie.class);
             movies = query.getResultList();
             transaction.commit();
         } catch (Exception e) {
@@ -101,9 +101,10 @@ public class RetrieveMovies {
      */
     public List<String> receiveMoviesSortedByRating() {
         List<String> topRatedMovies = new ArrayList<>();
-        List<Movie> movieList = new ArrayList<>(getAllMovies());
-        movieList.sort(new AverageScoreComparator());
-        for (Movie entry : movieList) {
+        List<Movie> allMovies = new ArrayList<>(getAllMovies());
+        List<Movie> sortedMovies = new ArrayList<>(allMovies);
+        sortedMovies.sort(new AverageScoreComparator());
+        for (Movie entry : sortedMovies) {
             String id = String.valueOf(entry.getId());
             String name = entry.getName();
             String rating = String.valueOf(entry.getAverageScore());

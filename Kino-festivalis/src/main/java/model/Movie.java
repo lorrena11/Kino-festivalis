@@ -29,8 +29,11 @@ public class Movie {
     private String duration;
 
     @Column(name = "premiere_date")
-    LocalDate premiereDate;
+    private LocalDate premiereDate;
     // private Date premiereDate;
+
+    @Column(name = "initial_score")
+    private BigDecimal initialScore;
 
     @Column(name = "average_score")
     private BigDecimal averageScore;
@@ -43,13 +46,22 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String name, String description, String duration, LocalDate premiereDate, BigDecimal averageScore) {
+    public Movie(String name, String description, String duration, LocalDate premiereDate, BigDecimal initialScore, BigDecimal averageScore) {
         this.name = name;
         this.description = description;
         this.duration = duration;
         this.premiereDate = premiereDate;
+        this.initialScore = initialScore;
         this.averageScore = averageScore;
     }
+
+//    public Movie(String name, String description, String duration, LocalDate premiereDate, BigDecimal initialScore) {
+//        this.name = name;
+//        this.description = description;
+//        this.duration = duration;
+//        this.premiereDate = premiereDate;
+//        this.initialScore = initialScore;
+//    }
 
     /**
      * old project constructor
@@ -91,12 +103,16 @@ public class Movie {
         return premiereDate;
     }
 
-    public BigDecimal getAverageScore() {
-        return averageScore;
+    public BigDecimal getInitialScore() {
+        return initialScore;
     }
 
     public void setAverageScore(BigDecimal averageScore) {
         this.averageScore = averageScore;
+    }
+
+    public BigDecimal getAverageScore() {
+        return averageScore;
     }
 
     @Override

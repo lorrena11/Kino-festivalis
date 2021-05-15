@@ -8,10 +8,11 @@ create table movie
     description   text,
     duration      varchar(10),
     premiere_date date                  not null,
-    average_score numeric(3, 1)         not null
+    initial_score numeric(3, 1)         not null,
+    average_score numeric (3,1)
 );
 
-insert into movie (name, description, duration, premiere_date, average_score)
+insert into movie (name, description, duration, premiere_date, initial_score)
 values ('Spring Day', 'A short description of Spring Day', '1h 40m', '2021-04-29', 7),
        ('Parasite', 'A short description of Parasite', '2h 03m', '2021-04-30', 8.9),
        ('Green Book', 'A short description of Green Book', '1h 56m', '2021-04-30', 8),
