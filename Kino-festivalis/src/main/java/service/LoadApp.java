@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
- * a class that prepares the program by generating some initial movies and their reviews
+ * a class that prepares the program by generating some initial movies (from json file) and their reviews
  * before the user gets to interact with the app
  */
 public class LoadApp {

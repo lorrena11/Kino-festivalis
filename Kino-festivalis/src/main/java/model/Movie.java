@@ -12,10 +12,11 @@ import java.util.List;
  * a movie representation
  */
 @Entity
-@Table(name = "movie")
+@Table(name = "movie", schema = "public")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @Column(name = "name")
@@ -37,7 +38,7 @@ public class Movie {
     @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
     private List<Review> reviews;
 
-    private DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+    //private DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     public Movie() {
     }
@@ -60,6 +61,14 @@ public class Movie {
         this.duration = duration;
         this.premiereDate = premiereDate;
         this.averageScore = averageScore;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public long getId() {
@@ -96,7 +105,7 @@ public class Movie {
                 " - '" + name + '\'' +
                 ", description: '" + description + '\'' +
                 ". Duration: '" + duration + '\'' +
-                "; Premiere date: " + df.format(premiereDate) +
+                "; Premiere date: " + premiereDate +
                 "; Average audience score: " + averageScore +
                 '}';
     }

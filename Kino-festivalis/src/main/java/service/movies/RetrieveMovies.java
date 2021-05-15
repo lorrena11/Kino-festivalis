@@ -51,7 +51,7 @@ public class RetrieveMovies {
         List<Movie> movieList = new ArrayList<>();
 
         try {
-            Query<Movie> query = session.createQuery(String.format("FROM movie WHERE %s = :%s", key, key), Movie.class);
+            Query<Movie> query = session.createQuery(String.format("FROM Movie WHERE %s = :%s", key, key), Movie.class);
             query.setParameter(key, value);
 
             if (limitOne) {

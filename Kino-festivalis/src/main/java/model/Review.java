@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * a rating representation
  */
 @Entity
-@Table(name = "review")
+@Table(name = "review", schema = "public")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

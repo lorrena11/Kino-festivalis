@@ -1,3 +1,4 @@
+import configuration.HibernateConfig;
 import exceptions.IncorrectReviewException;
 import exceptions.MovieNotFoundException;
 import exceptions.MovieNotOutYetException;
@@ -20,10 +21,13 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        LoadApp.load();
+        // LoadApp.load();
+        HibernateConfig.buildSessionFactory();
         ReviewListFactory writeReview = new ReviewListFactory();
         RetrieveMovies retrieveMovies = new RetrieveMovies();
+        RetrieveReviews retrieveReviews = new RetrieveReviews();
         AverageScoreCounterImpl updateScore = new AverageScoreCounterImpl();
+        updateScore.updateAllAverageScores(retrieveMovies.getAllMovies()); // necessary since we added example reviews
 
         //Date currentDate = new Date(System.currentTimeMillis());
         LocalDate currentDate = LocalDate.now();
@@ -54,7 +58,8 @@ public class Main {
                                 System.out.println("\nRead comments? [1] - read comments; [2] - go back");
                                 int choiceRead = scanner.nextInt();
                                 if (choiceRead == 1) {
-                                    System.out.println(RetrieveReviews.readReviews(chosenMovieInfo));
+                                    //System.out.println(retrieveReviews.readReviews(chosenMovieInfo));
+                                    System.out.println(retrieveReviews.readReviews(chosenMovieInfo));
                                 } else {
                                     System.out.println("Back to main menu");
                                 }
@@ -120,6 +125,6 @@ public class Main {
 
         }
         scanner.close();
-
+        HibernateConfig.closeSessionFactory();
     }
 }

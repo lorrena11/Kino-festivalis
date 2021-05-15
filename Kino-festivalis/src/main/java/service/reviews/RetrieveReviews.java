@@ -14,7 +14,7 @@ public class RetrieveReviews {
     /**
      * get all reviews
      */
-    public static List<Review> getAllReviews() {
+    public List<Review> getAllReviews() {
         Session session = HibernateConfig.openSession();
         Transaction transaction = session.beginTransaction();
         List<Review> reviewList = new ArrayList<>();
@@ -43,7 +43,7 @@ public class RetrieveReviews {
         List<Review> reviewList = new ArrayList<>();
 
         try {
-            Query<Review> query = session.createQuery(String.format("FROM review WHERE %s = :%s", key, key), Review.class);
+            Query<Review> query = session.createQuery(String.format("FROM Review WHERE %s = :%s", key, key), Review.class);
             query.setParameter(key, value);
 
             if (limitOne) {
@@ -66,19 +66,19 @@ public class RetrieveReviews {
      * previous methods below, edited:
      * this method takes a certain movie as a parameter, returns all reviews of this movie from the list.
      */
-    public static String readReviews(Movie movie) {
+    public String readReviews(Movie movie) {
+
         StringBuilder allReviews = new StringBuilder();
-        // List<Review> reviewList = ReviewListFactory.getReviewList();
-        List<Review> reviewList = getAllReviews();
-        for (Review entry : reviewList)
-            if (entry.getMovie().equals(movie)) {
-                allReviews.append("Comment: [");
-                allReviews.append(entry.getComment());
-                allReviews.append("]; Rated: [");
-                allReviews.append(entry.getScore());
-                allReviews.append("]\n");
-            }
-        if (allReviews.length() == 0) allReviews.append("This movie has no audience reviews yet");
+        List<Review> reviewList = getAllReviews("movie_id", movie.getId(), false);
+        for (Review entry : reviewList) {
+            allReviews.append("Comment: [");
+            allReviews.append(entry.getComment());
+            allReviews.append("]; Rated: [");
+            allReviews.append(entry.getScore());
+            allReviews.append("]\n");
+        }
         return String.valueOf(allReviews);
+
     }
+
 }

@@ -34,12 +34,11 @@
         <!--            true-->
         <!--        </property>-->
 
-        <!-- List of XML mapping files -->
-<!--        <mapping class="lt.codecademy.entity.Director"/>-->
-<!--        <mapping class="lt.codecademy.entity.Movie"/>-->
-<!--        <mapping class="lt.codecademy.entity.Genre"/>-->
+<!--         List of XML mapping files -->
 
-        <!--        <mapping resource = "Employee.hbm.xml"/>-->
+        <mapping class="model.Movie"/>
+        <mapping class="model.Review"/>
+
 
     </session-factory>
 </hibernate-configuration>

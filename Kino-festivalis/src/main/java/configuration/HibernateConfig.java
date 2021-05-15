@@ -6,16 +6,11 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateConfig {
     private static final Configuration configuration = new Configuration().configure();
+
     private static SessionFactory factory;
 
     public static Session openSession() {
-        try {
-            return factory.openSession();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return factory.openSession();
     }
 
     public static void buildSessionFactory() {
