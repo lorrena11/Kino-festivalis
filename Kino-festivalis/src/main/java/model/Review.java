@@ -2,27 +2,36 @@ package model;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
  * a rating representation
  */
+@Entity
+@Table(name = "review")
 public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
+    @Column(name = "score")
     private BigDecimal score;
 
+    @Column(name = "comment")
     private String comment;
 
     @CreationTimestamp
-    @Column(name = "created")
+    @Column(name = "created_at")
     private LocalDateTime created;
+
+    public Review() {
+    }
 
     public Review(Movie movie, BigDecimal score, String comment) {
         this.movie = movie;
