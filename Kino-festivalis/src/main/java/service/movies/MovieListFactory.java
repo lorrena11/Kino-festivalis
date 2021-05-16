@@ -38,6 +38,21 @@ public class MovieListFactory {
         return movie;
     }
 
+    public void delete(Movie movie) {
+        Session session = HibernateConfig.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            session.delete(movie);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
+    }
+
     /**
      * this method generates movie data for the app
      */

@@ -39,6 +39,24 @@ public class ReviewListFactory {
         writeReview(review.getMovie(), review.getScore(), review.getComment());
     }
 
+    /**
+     * used for test
+     */
+    public void delete(Review review) {
+        Session session = HibernateConfig.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            session.delete(review);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+        } finally {
+            session.close();
+        }
+    }
+
 //*********************************************************************************
 //    public void addReview(Movie movie, BigDecimal score, String comment) {
 //        reviewList.add(new Review(movie, score, comment));

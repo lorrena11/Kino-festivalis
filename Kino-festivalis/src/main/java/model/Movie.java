@@ -38,7 +38,7 @@ public class Movie {
     @Column(name = "average_score")
     private BigDecimal averageScore;
 
-    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Review> reviews;
 
     //private DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
