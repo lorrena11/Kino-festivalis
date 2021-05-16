@@ -8,8 +8,6 @@ import org.hibernate.Transaction;
 import service.movies.AverageScoreCounterImpl;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * a class that saves reviews

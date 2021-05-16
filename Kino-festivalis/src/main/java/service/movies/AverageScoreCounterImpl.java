@@ -6,7 +6,6 @@ import model.Review;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import service.reviews.RetrieveReviews;
-import service.reviews.ReviewListFactory;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

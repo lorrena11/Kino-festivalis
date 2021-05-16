@@ -1,16 +1,18 @@
 package service.movies;
 
+import configuration.HibernateConfig;
 import exceptions.MovieNotFoundException;
 import model.Movie;
-import service.reviews.ReviewCounterImpl;
-import util.AverageScoreComparator;
-import util.CriteriaImpl;
-import configuration.HibernateConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import service.reviews.ReviewCounterImpl;
+import util.AverageScoreComparator;
+import util.CriteriaImpl;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * class for retrieving movies. Sends movies straight back to the user or provides Lists and Maps to other classes and methods.

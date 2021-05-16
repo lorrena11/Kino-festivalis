@@ -2,10 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,13 +63,13 @@ public class Movie {
     /**
      * old project constructor
      */
-    public Movie(long id, String name, String description, String duration, LocalDate premiereDate, BigDecimal averageScore) {
+    public Movie(long id, String name, String description, String duration, LocalDate premiereDate, BigDecimal initialScore) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.duration = duration;
         this.premiereDate = premiereDate;
-        this.averageScore = averageScore;
+        this.initialScore = initialScore;
     }
 
     public List<Review> getReviews() {
@@ -93,6 +90,10 @@ public class Movie {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDuration() {

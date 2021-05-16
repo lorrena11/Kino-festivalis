@@ -3,7 +3,6 @@ import exceptions.IncorrectReviewException;
 import exceptions.MovieNotFoundException;
 import exceptions.MovieNotOutYetException;
 import model.Movie;
-import service.LoadApp;
 import service.movies.AverageScoreCounterImpl;
 import service.movies.RetrieveMovies;
 import service.reviews.RetrieveReviews;
@@ -12,7 +11,6 @@ import service.reviews.ReviewListFactory;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
