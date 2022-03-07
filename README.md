@@ -1,4 +1,4 @@
-# Kino-festivalis  „Balandis ne už kalnų“
+# Film-Festival
 Balandžio mėnesį rengiamas kino festivalis, kuriame publikai bus pristatomi užsienio kūrėjų filmai. 
 Renginiui reikalinga programėlė, kurios pagalba žiūrovai galėtų daugiau sužinoti apie filmus ir jų
 repertuarą, paskaityti kitų žiūrovų komentarus arba patys įvertinti matytą filmą. Žiūrovams, 
